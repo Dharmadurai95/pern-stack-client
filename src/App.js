@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Container from '@mui/material/Container';
+import Home from './Home';
+import RestaurantContextProvider from './Context/RestaurantContext'
+import UpdateRestaurant from './component/UpdateRestaurant';
+import RestaurantDetails from './component/RestaurantDetails';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RestaurantContextProvider>
+  
+      <Container maxWidth="lg">
+        <Routes>
+          <Route path='/' element={<Home  />} />
+          <Route path='/restaurant/:id/update' element={<UpdateRestaurant />} />
+          <Route path='/restaurant-details/:id' element={<RestaurantDetails />} />
+        </Routes>
+      </Container>
+    </RestaurantContextProvider>
   );
 }
 
